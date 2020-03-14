@@ -15,6 +15,17 @@ The steps of analysis are:
 1. Annotate with snpEff
 1. Calculate MSI with msisensor
 
+## Getting started
+
+This container is designed to be run using Singularity. Version 3.0.1-104.g4feafc42.dirty.el7 was used during testing.
+
+To download the container: TBD
+
+To run you must provide the absolute paths to files that are required.
+This can be done by using the --bind parameters to singularity like this:
+
+singularity run --bind /path/to/reference/fasta:/ref,/path/to/tumour_bam/folder/:/tumour_path,/path/to/normal_bam/folder/:/normal_path PROFYLE_TMB -t /tumour_path/tumour_bam.bam -n  /normal_path/normal.bam -r /ref/hg19a.fa -o `pwd`
+
 ## Please Note   
 All steps will try to use 48 threads
 Currently only works for hg19 genome bams without the 'chr' prefix.
@@ -34,13 +45,4 @@ Coding SNV TMB:             coding_SNVs * 1000000 / CDS_bases
 Coding Indel TMB:           coding_Indels * 1000000 / CDS_bases
 MSI score:                  Fraction of sites reported as MSI by MSIsensor
 
-## Getting started
 
-This container is designed to be run using Singularity. Version 3.0.1-104.g4feafc42.dirty.el7 was used during testing.
-
-To download the container: TBD
-
-To run you must provide the absolute paths to files that are required.
-This can be done by using the --bind parameters to singularity like this:
-
-singularity run --bind /path/to/reference/fasta:/ref,/path/to/tumour_bam/folder/:/tumour_path,/path/to/normal_bam/folder/:/normal_path PROFYLE_TMB -t /tumour_path/tumour_bam.bam -n  /normal_path/normal.bam -r /ref/hg19a.fa -o `pwd`
