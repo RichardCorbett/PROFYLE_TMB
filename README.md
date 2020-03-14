@@ -24,7 +24,7 @@ To download the container: TBD
 To run you must provide the absolute paths to files that are required.
 This can be done by using the --bind parameters to singularity like this:
 
-singularity run --bind /path/to/reference/fasta:/ref,/path/to/tumour_bam/folder/:/tumour_path,/path/to/normal_bam/folder/:/normal_path PROFYLE_TMB -t /tumour_path/tumour_bam.bam -n  /normal_path/normal.bam -r /ref/hg19a.fa -o `pwd`
+    singularity run --bind /path/to/reference/fasta:/ref,/path/to/tumour_bam/folder/:/tumour_path,/path/to/normal_bam/folder/:/normal_path PROFYLE_TMB -t /tumour_path/tumour_bam.bam -n  /normal_path/normal.bam -r /ref/hg19a.fa -o `pwd`
 
 ## Please Note   
 All steps will try to use 48 threads
