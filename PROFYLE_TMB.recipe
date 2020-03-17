@@ -117,14 +117,14 @@ Include: yum
 
     #Filter to get just the passed variants int he counts below
     echo "annotating variants..." | tee -a ${log_file}
-    java -Xmx2g -jar /usr/TMB/snpEff/SnpSift.jar filter "(FILTER = 'PASS')" ${manta_folder}/results/variants/somaticSV.vcf.gz > ${manta_folder}/results/variants/somatic.SV.PASS.vcf | tee -a ${log_file} 
-    java -Xmx2g -jar /usr/TMB/snpEff/SnpSift.jar filter "(FILTER = 'PASS')" ${strelka_folder}/results/variants/somatic.snvs.vcf.gz > ${strelka_folder}/results/variants/somatic.snvs.PASS.vcf | tee -a ${log_file}    
-    java -Xmx2g -jar /usr/TMB/snpEff/SnpSift.jar filter "(FILTER = 'PASS')" ${strelka_folder}/results/variants/somatic.indels.vcf.gz > ${strelka_folder}/results/variants/somatic.indels.PASS.vcf | tee -a ${log_file}  
+    java -Xmx16g -jar /usr/TMB/snpEff/SnpSift.jar filter "(FILTER = 'PASS')" ${manta_folder}/results/variants/somaticSV.vcf.gz > ${manta_folder}/results/variants/somatic.SV.PASS.vcf | tee -a ${log_file} 
+    java -Xmx16g -jar /usr/TMB/snpEff/SnpSift.jar filter "(FILTER = 'PASS')" ${strelka_folder}/results/variants/somatic.snvs.vcf.gz > ${strelka_folder}/results/variants/somatic.snvs.PASS.vcf | tee -a ${log_file}    
+    java -Xmx16g -jar /usr/TMB/snpEff/SnpSift.jar filter "(FILTER = 'PASS')" ${strelka_folder}/results/variants/somatic.indels.vcf.gz > ${strelka_folder}/results/variants/somatic.indels.PASS.vcf | tee -a ${log_file}  
 
     #Run SnpEff (both jobs at once)
-    java -Xmx4g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_snv_pass.html ${strelka_folder}/results/variants/somatic.snvs.PASS.vcf > ${results_folder}/somatic.snvs.PASS.SnpEff.vcf | tee -a ${log_file} & 
-    java -Xmx4g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_indel_pass.html ${strelka_folder}/results/variants/somatic.indels.PASS.vcf > ${results_folder}/somatic.indels.PASS.SnpEff.vcf | tee -a ${log_file} &
-    java -Xmx4g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_sv_pass.html ${manta_folder}/results/variants/somatic.SV.PASS.vcf > ${results_folder}/somatic.SV.PASS.SnpEff.vcf | tee -a ${log_file}  
+    java -Xmx16g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_snv_pass.html ${strelka_folder}/results/variants/somatic.snvs.PASS.vcf > ${results_folder}/somatic.snvs.PASS.SnpEff.vcf | tee -a ${log_file} & 
+    java -Xmx16g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_indel_pass.html ${strelka_folder}/results/variants/somatic.indels.PASS.vcf > ${results_folder}/somatic.indels.PASS.SnpEff.vcf | tee -a ${log_file} &
+    java -Xmx16g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_sv_pass.html ${manta_folder}/results/variants/somatic.SV.PASS.vcf > ${results_folder}/somatic.SV.PASS.SnpEff.vcf | tee -a ${log_file}  
 
     #run msisensor and send the output to the counts folder
     echo "estimating MSI..." | tee -a ${log_file}
@@ -135,8 +135,8 @@ Include: yum
     CDS_bases=$(cat /usr/TMB/CDS_size.txt)
     total_SNVs=$(cat ${results_folder}/somatic.snvs.PASS.SnpEff.vcf | grep -v ^# | wc -l)
     total_Indels=$(cat ${results_folder}//somatic.indels.PASS.SnpEff.vcf | grep -v ^# | wc -l)
-    coding_SNVs=$(java -Xmx4g -jar /usr/TMB/snpEff/SnpSift.jar filter "(EFF[*].IMPACT = 'MODERATE') | (EFF[*].IMPACT = 'HIGH')" ${results_folder}/somatic.snvs.PASS.SnpEff.vcf | grep -E '^[1234567890XY]{1,2}\s' | wc -l)
-    coding_Indels=$(java -Xmx4g -jar /usr/TMB/snpEff/SnpSift.jar filter "(EFF[*].IMPACT = 'MODERATE') | (EFF[*].IMPACT = 'HIGH')" ${results_folder}/somatic.indels.PASS.SnpEff.vcf | grep -E '^[1234567890XY]{1,2}\s' | wc -l)
+    coding_SNVs=$(java -Xmx16g -jar /usr/TMB/snpEff/SnpSift.jar filter "(EFF[*].IMPACT = 'MODERATE') | (EFF[*].IMPACT = 'HIGH')" ${results_folder}/somatic.snvs.PASS.SnpEff.vcf | grep -E '^[1234567890XY]{1,2}\s' | wc -l)
+    coding_Indels=$(java -Xmx16g -jar /usr/TMB/snpEff/SnpSift.jar filter "(EFF[*].IMPACT = 'MODERATE') | (EFF[*].IMPACT = 'HIGH')" ${results_folder}/somatic.indels.PASS.SnpEff.vcf | grep -E '^[1234567890XY]{1,2}\s' | wc -l)
     MSI_score=$(awk 'NR==2{ print $NF }' ${results_folder}/msi_out.txt)
 
     echo "TMB Pipeline V0.1" | tee ${results_file}
