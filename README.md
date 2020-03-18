@@ -27,8 +27,11 @@ This can be done by using the --bind parameters to singularity like this:
     singularity run --bind /path/to/reference/fasta:/ref,/path/to/tumour_bam/folder/:/tumour_path,/path/to/normal_bam/folder/:/normal_path PROFYLE_TMB -t /tumour_path/tumour_bam.bam -n  /normal_path/normal.bam -r /ref/hg19a.fa -o `pwd`
 
 ## Please Note   
-All steps will try to use 48 threads
-Currently only works for hg19 genome bams without the 'chr' prefix.
+* All steps will use 48 threads where possible
+* The machine where analysis is performed should have at least 64Gb of RAM
+* Due to the nature of the analysis applying the container to many samples (>20) at once may add heavy load to your filesystem.
+* The raw VCF files for each type of analysis are compressed and kept.   This may result in up to 500Mb of files for each sample.
+
 
 ## Output
 The output folder will contain a file named results.txt where the following will be reported:
