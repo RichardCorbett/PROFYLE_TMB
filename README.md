@@ -41,7 +41,6 @@ Field | Comment
  xTotal genome Indels |        Number of passed Indels called by Strelka 2
  Coding SNVs |                 Number of passed Coding SNVs called by Strelka 2
  Coding Indels |               Number of passed Coding Indels called by Strelka 2
-
  Genome SNV TMB |              total_SNVs * 1000000 / total_bases
  Genome Indel TMB |            total_Indels * 1000000 / total_bases
  Coding SNV TMB |              coding_SNVs * 1000000 / CDS_bases
