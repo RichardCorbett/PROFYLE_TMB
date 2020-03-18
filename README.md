@@ -31,18 +31,18 @@ All steps will try to use 48 threads
 Currently only works for hg19 genome bams without the 'chr' prefix.
 
 ## Output
-The output folder will contain a file named results.txt where the following will be reported:
-Non-N bases in 1-22,X,Y:    Count of the bases used as the whole genome calculation denominator
-CDS bases in 1-22,X,Y:      Count of the unique CDS bases used in the coding calculation denominator
-Total genome SNVs:          Number of SNVs called by Strelka 2
-Total genome Indels:        Number of Indels called by Strelka 2
-Coding SNVs:                Number of Coding SNVs called by Strelka 2
-Coding Indels:              Number of COding Indels called by Strelka 2
+* The output folder will contain a file named results.txt where the following will be reported:
+* Non-N bases in 1-22,X,Y:    Count of the bases used as the whole genome calculation denominator
+* CDS bases in 1-22,X,Y:      Count of the unique CDS bases used in the coding calculation denominator
+* Total genome SNVs:          Number of passed SNVs called by Strelka 2
+* Total genome Indels:        Number of passed Indels called by Strelka 2
+* Coding SNVs:                Number of passed Coding SNVs called by Strelka 2
+* Coding Indels:              Number of passed Coding Indels called by Strelka 2
 
-Genome SNV TMB:             total_SNVs * 1000000 / total_bases
-Genome Indel TMB:           total_Indels * 1000000 / total_bases
-Coding SNV TMB:             coding_SNVs * 1000000 / CDS_bases
-Coding Indel TMB:           coding_Indels * 1000000 / CDS_bases
-MSI score:                  Fraction of sites reported as MSI by MSIsensor
+* Genome SNV TMB:             total_SNVs * 1000000 / total_bases
+* Genome Indel TMB:           total_Indels * 1000000 / total_bases
+* Coding SNV TMB:             coding_SNVs * 1000000 / CDS_bases
+* Coding Indel TMB:           coding_Indels * 1000000 / CDS_bases
+* MSI score:                  Fraction of sites reported as MSI by MSIsensor
 
 
