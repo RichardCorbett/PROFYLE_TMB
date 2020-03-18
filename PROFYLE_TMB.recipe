@@ -121,10 +121,10 @@ Include: yum
     java -Xmx16g -jar /usr/TMB/snpEff/SnpSift.jar filter "(FILTER = 'PASS')" ${strelka_folder}/results/variants/somatic.snvs.vcf.gz > ${strelka_folder}/results/variants/somatic.snvs.PASS.vcf | tee -a ${log_file}    
     java -Xmx16g -jar /usr/TMB/snpEff/SnpSift.jar filter "(FILTER = 'PASS')" ${strelka_folder}/results/variants/somatic.indels.vcf.gz > ${strelka_folder}/results/variants/somatic.indels.PASS.vcf | tee -a ${log_file}  
 
-    #Run SnpEff (both jobs at once)
-    java -Xmx16g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_snv_pass.html ${strelka_folder}/results/variants/somatic.snvs.PASS.vcf > ${results_folder}/somatic.snvs.PASS.SnpEff.vcf | tee -a ${log_file} & 
-    java -Xmx16g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_indel_pass.html ${strelka_folder}/results/variants/somatic.indels.PASS.vcf > ${results_folder}/somatic.indels.PASS.SnpEff.vcf | tee -a ${log_file} &
-    java -Xmx16g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_sv_pass.html ${manta_folder}/results/variants/somatic.SV.PASS.vcf > ${results_folder}/somatic.SV.PASS.SnpEff.vcf | tee -a ${log_file}  
+    #Run SnpEff
+    java -Xmx48g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_snv_pass.html ${strelka_folder}/results/variants/somatic.snvs.PASS.vcf > ${results_folder}/somatic.snvs.PASS.SnpEff.vcf | tee -a ${log_file} 
+    java -Xmx48g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_indel_pass.html ${strelka_folder}/results/variants/somatic.indels.PASS.vcf > ${results_folder}/somatic.indels.PASS.SnpEff.vcf | tee -a ${log_file} 
+    java -Xmx48g -jar /usr/TMB/snpEff/snpEff.jar GRCh37.75 -s ${results_folder}/snpEff_summary_sv_pass.html ${manta_folder}/results/variants/somatic.SV.PASS.vcf > ${results_folder}/somatic.SV.PASS.SnpEff.vcf | tee -a ${log_file}  
 
     #run msisensor and send the output to the counts folder
     echo "estimating MSI..." | tee -a ${log_file}
