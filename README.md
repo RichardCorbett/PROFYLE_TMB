@@ -20,8 +20,11 @@ The steps of analysis are:
 This container is designed to be run using Singularity. Testing was performed using Singularity Version 3.0.1-104.g4feafc42.dirty.el7.
 
 To download the container: 
+
     singularity pull library://richardcorbett/profyle_tmb/profyle_tmb:*version*
-for example
+
+for example:
+
     singularity pull library://richardcorbett/profyle_tmb/profyle_tmb:v0_0_1
 
 To run you must provide the absolute paths to files that are required.
