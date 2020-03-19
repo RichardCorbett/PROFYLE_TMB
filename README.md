@@ -17,14 +17,17 @@ The steps of analysis are:
 
 ## Getting started
 
-This container is designed to be run using Singularity. Version 3.0.1-104.g4feafc42.dirty.el7 was used during testing.
+This container is designed to be run using Singularity. Testing was performed using Singularity Version 3.0.1-104.g4feafc42.dirty.el7.
 
-To download the container: TBD
+To download the container: 
+    singularity pull library://richardcorbett/profyle_tmb/profyle_tmb:*version*
+for example
+    singularity pull library://richardcorbett/profyle_tmb/profyle_tmb:v0_0_1
 
 To run you must provide the absolute paths to files that are required.
 This can be done by using the --bind parameters to singularity like this:
 
-    singularity run --bind /path/to/reference/fasta:/ref,/path/to/tumour_bam/folder/:/tumour_path,/path/to/normal_bam/folder/:/normal_path PROFYLE_TMB -t /tumour_path/tumour_bam.bam -n  /normal_path/normal.bam -r /ref/hg19a.fa -o `pwd`
+    singularity run --bind /path/to/reference/fasta:/ref,/path/to/tumour_bam/folder/:/tumour_path,/path/to/normal_bam/folder/:/normal_path profyle_tmb_v0_0_1.sif -t /tumour_path/tumour_bam.bam -n  /normal_path/normal.bam -r /ref/hg19a.fa -o `pwd`
 
 ## Please Note   
 * All steps will use 48 threads where possible
