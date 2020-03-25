@@ -25,7 +25,7 @@ To download the container:
 
 for example:
 
-    singularity pull library://richardcorbett/profyle_tmb/profyle_tmb:v0_0_1
+    singularity pull library://richardcorbett/profyle_tmb/profyle_tmb:v0_0_2
 
 To run you must provide the absolute paths to files that are required.
 This can be done by using the --bind parameters to singularity like this:
