@@ -1,3 +1,6 @@
+# Deprecated and merged into https://github.com/bcgsc/WGS_TMB
+
+
 # PROFYLE_TMB
 
 This container will run the following tools in order to estimate the 
